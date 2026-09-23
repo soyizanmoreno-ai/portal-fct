@@ -4,7 +4,7 @@ class UserCreate(BaseModel):
 
     email: EmailStr
     password: str
-    role: str
+    role: str = "alumno"
 
 class UserResponse(BaseModel):
 
