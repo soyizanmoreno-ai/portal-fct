@@ -1,10 +1,10 @@
 from datetime import datetime 
-from sqlalchemy import func, ForeignKey, DateTime
+from sqlalchemy import func, ForeignKey, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base_class import Base
 
-class Application:
+class Application(Base):
 
     __tablename__ = "applications"
 

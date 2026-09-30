@@ -4,7 +4,7 @@ from app.db.base_class import Base
 
 class CompanyProfile(Base):
 
-    __tablename__ = 'companies'
+    __tablename__ = "companies"
 
     id: Mapped[int] = mapped_column(primary_key = True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), unique = True)

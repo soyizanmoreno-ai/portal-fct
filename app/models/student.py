@@ -4,7 +4,7 @@ from app.db.base_class import Base
 
 class StudentProfile(Base):
 
-    __tablename__ = 'students'
+    __tablename__ = "students"
 
     id: Mapped[int] = mapped_column(primary_key = True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), unique = True)
