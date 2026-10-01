@@ -1,10 +1,11 @@
-const API_ROOT = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api/v1';
+const API_ROOT = import.meta.env.VITE_API_URL || '/api/v1';
 
 export async function api(path, options = {}) {
   const token = localStorage.getItem('fct_token');
   const headers = new Headers(options.headers || {});
   if (token) headers.set('Authorization', `Bearer ${token}`);
-  if (options.body && !(options.body instanceof FormData) && !headers.has('Content-Type')) {
+  const isFormBody = options.body instanceof FormData || options.body instanceof URLSearchParams;
+  if (options.body && !isFormBody && !headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json');
   }
 
