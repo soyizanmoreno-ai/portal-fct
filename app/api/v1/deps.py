@@ -51,3 +51,12 @@ def get_current_student_user( current_user: User = Depends(get_current_user)) ->
     if current_user.role != "alumno":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="El usuario no tiene permisos de alumno")
     return current_user
+
+
+def get_current_tutor_user(current_user: User = Depends(get_current_user)) -> User:
+    if current_user.role != "tutor":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Acceso restringido únicamente a tutores del centro educativo."
+        )
+    return current_user

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import applications, auth, fct_logs, offers, stats, users
+from app.api.v1.endpoints import applications, auth, fct_logs, offers, stats, users, notifications
 
 
 
@@ -11,3 +11,5 @@ api_router.include_router(offers.router, prefix="/offers", tags=["offers"])
 api_router.include_router(applications.router, prefix="/applications", tags=["applications"])
 api_router.include_router(fct_logs.router, prefix="/fct-logs", tags=["fct-logs"])
 api_router.include_router(stats.router, prefix="/stats", tags=["stats"])
+api_router.include_router(tutor.router, prefix="/tutor", tags=["Tutor Centro"])
+api_router.include_router(notifications.router, prefix="/notifications", tags=["Notificaciones"])

@@ -12,3 +12,11 @@ class Application(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable= False)
     offer_id: Mapped[int] = mapped_column(ForeignKey("offers.id"), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    student: Mapped["User"] = relationship("User")
+
+    status: Mapped[str] = mapped_column(String, default="pendiente")
+    feedback: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+    student: Mapped["User"] = relationship("User")
+    offer: Mapped["Offer"] = relationship("Offer")

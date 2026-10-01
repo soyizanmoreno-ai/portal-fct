@@ -12,3 +12,12 @@ class User(Base):
     role: Mapped[str]  = mapped_column(String(100), default="alumno")
     is_active: Mapped[bool] = mapped_column(default = True)
     offers: Mapped[list["Offer"]] = relationship(back_populates="company")
+
+    github_url: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    linkedin_url: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    portfolio_url: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    cv_url: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+
+    tutor_id: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id"), nullable=True)
+
+    students: Mapped[List["User"]] = relationship("User", remote_side=[tutor_id], backref="tutor")

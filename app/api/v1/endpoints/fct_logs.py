@@ -47,6 +47,12 @@ def approve_log(log_id: int, current_user: User = Depends(get_current_company_us
     if not offer or offer.company_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="No tienes permiso para aprobar este registro de prácticas")
 
+    create_notification(
+        db=db,
+        user_id=application.user_id,  # Usuario de la postulación
+        title="Parte de FCT Aprobado",
+        message=f"Se han aprobado tus {log.hours} horas del día {log.date}."
+)
     log.is_approved = True
     db.commit()
     db.refresh(log)
