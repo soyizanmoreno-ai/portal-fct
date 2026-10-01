@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowUpRight, Check, ChevronRight, Clock3, Download, FileText, MapPin, Plus, Search, Sparkles, Trash2, Upload } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, Check, ChevronRight, Clock3, Download, FileText, Plus, Search, Sparkles, Trash2, Upload } from 'lucide-react';
 import { api, download, requestJson } from '../api';
 
 const STATUS_LABELS = { pendiente: 'Pendiente', en_revision: 'En revisión', entrevista: 'Entrevista', aceptado: 'Aceptada', rechazado: 'No seleccionada', retirada: 'Retirada' };

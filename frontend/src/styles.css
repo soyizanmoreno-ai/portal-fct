@@ -260,6 +260,11 @@ textarea { resize: vertical; line-height: 1.45; }
 .toast-error { border-color: #ecd1c7; color: #8e4c39; background: #fff6f2; }
 .toast .icon-button { width: 25px; height: 25px; }
 .boot-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 12px; color: #607369; font-size: 12px; }
+.render-error-screen { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #f3f5f2; }
+.render-error-panel { width: min(520px, 100%); display: grid; gap: 13px; padding: 26px; border: 1px solid #ecd1c7; border-radius: 7px; background: #fff; box-shadow: var(--shadow); }
+.render-error-panel h1 { margin: 0; color: #263a30; font: 600 24px 'Space Grotesk', sans-serif; }
+.render-error-panel p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+.render-error-panel code { overflow-wrap: anywhere; padding: 11px; border-radius: 4px; color: #8e4c39; background: #fff6f2; font-size: 11px; }
 
 .auth-layout { min-height: 100vh; display: grid; grid-template-columns: minmax(350px, .85fr) 1.15fr; background: #fff; }
 .auth-rail { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; padding: 34px 38px; color: white; background-color: #174b3b; background-image: linear-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 3%) 1px, transparent 1px); background-size: 38px 38px; }
