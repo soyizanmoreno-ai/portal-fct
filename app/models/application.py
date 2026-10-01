@@ -1,7 +1,7 @@
 from datetime import datetime 
-from sqlalchemy import func, ForeignKey, DateTime, String
-from sqlalchemy.orm import Mapped, mapped_column
-
+from sqlalchemy import Boolean, func, ForeignKey, DateTime, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import Optional
 from app.db.base_class import Base
 
 class Application(Base):
@@ -16,7 +16,5 @@ class Application(Base):
 
     status: Mapped[str] = mapped_column(String, default="pendiente")
     feedback: Mapped[Optional[str]] = mapped_column(String, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-
-    student: Mapped["User"] = relationship("User")
     offer: Mapped["Offer"] = relationship("Offer")
+    contact_shared: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)

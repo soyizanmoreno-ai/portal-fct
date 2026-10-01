@@ -1,5 +1,5 @@
 # app/models/notification.py
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import String, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base_class import Base
@@ -12,7 +12,9 @@ class Notification(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     message: Mapped[str] = mapped_column(String, nullable=False)
     is_read: Mapped[bool] = mapped_column(Boolean, default=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
+    )
 
     # Relación hacia el usuario receptor
     user: Mapped["User"] = relationship("User")

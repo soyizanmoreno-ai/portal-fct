@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.api import deps
+from app.api.v1 import deps
 from app.models.user import User
 from app.models.notification import Notification
 from app.schemas.notification import NotificationResponse

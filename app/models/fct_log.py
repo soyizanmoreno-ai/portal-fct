@@ -14,3 +14,4 @@ class FCTLog(Base):
     hours: Mapped[float] = mapped_column(Float, nullable=False)
     tasks: Mapped[str] = mapped_column(String(250), nullable=False)
     is_approved: Mapped[bool] = mapped_column(default=False)
+    is_tutor_approved: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)

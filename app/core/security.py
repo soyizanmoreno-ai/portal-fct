@@ -1,9 +1,12 @@
 from datetime import datetime, timedelta, timezone
+import os
 import jwt
 from passlib.context import CryptContext
 
-# Clave secreta para firmar los tokens (en producción irá en variables de entorno)
-SECRET_KEY = "TU_CLAVE_SECRETA_SUPER_SEGURA_CAMBIAR_EN_PRODUCCION"
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY or len(SECRET_KEY) < 32:
+    raise RuntimeError("Configura SECRET_KEY con al menos 32 caracteres.")
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

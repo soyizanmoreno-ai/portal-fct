@@ -15,3 +15,9 @@ class Offer(Base):
     company_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     company: Mapped["User"] = relationship(back_populates="offers")
 
+    @property
+    def company_name(self) -> str | None:
+        if self.company and self.company.company_profile:
+            return self.company.company_profile.company_name
+        return None
+

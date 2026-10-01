@@ -18,7 +18,7 @@ def login_access_token(
     user = db.query(User).filter(User.email == form_data.username).first()
 
     # 2. Comprueba si el usuario NO existe O si la contraseña es incorrecta con verify_password()
-    if not user or not verify_password(form_data.password, user.hashed_password):
+    if not user or not user.is_active or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Credenciales incorrectas")
   
     access_token = create_access_token(subject=user.email)
